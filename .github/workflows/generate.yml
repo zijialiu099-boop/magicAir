@@ -1,1 +1,22 @@
+name: Generate AppStoreInfo
 
+on:
+  workflow_dispatch:
+
+jobs:
+  generate:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Generate AppStoreInfo.plist
+        run: |
+          xcrun swinfo -f MagicAir_1.9.7.ipa -o AppStoreInfo.plist -plistFormat binary -prettyprint true
+          ls -lh AppStoreInfo.plist
+      
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: AppStoreInfo
+          path: AppStoreInfo.plist
