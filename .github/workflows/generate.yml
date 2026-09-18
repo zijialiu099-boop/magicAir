@@ -12,7 +12,7 @@ jobs:
       
       - name: Generate AppStoreInfo.plist
         run: |
-          xcrun swinfo -f MagicAir_1.9.7.ipa -o AppStoreInfo.plist -plistFormat binary -prettyprint true
+          xcrun swinfo -f MagicAir_1.9.8.ipa -o AppStoreInfo.plist -plistFormat binary -prettyprint true
           ls -lh AppStoreInfo.plist
       
       - name: Upload artifact
